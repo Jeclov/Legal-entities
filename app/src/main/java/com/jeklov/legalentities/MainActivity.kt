@@ -11,37 +11,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.jeklov.legalentities.data.db.MainDB
+import com.jeklov.legalentities.ui.screens.menu.NavMenuUI
 import com.jeklov.legalentities.ui.theme.LegalEntitiesTheme
 
 class MainActivity : ComponentActivity() {
+    private lateinit var dataBase: MainDB
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        dataBase = MainDB.getInstance(this)
         setContent {
             LegalEntitiesTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                NavMenuUI(dataBase, this, application)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LegalEntitiesTheme {
-        Greeting("Android")
     }
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Юр лица</string>
+    <string name="login">Вход</string>
+    <string name="login_and_signup">Вход и регистрация</string>
+    <string name="signup">Регистрация</string>
+    <string name="chat">Чат</string>
+</resources>
