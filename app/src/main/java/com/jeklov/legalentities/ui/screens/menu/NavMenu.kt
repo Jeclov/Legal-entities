@@ -113,14 +113,14 @@ fun NavMenuUI(
                 )
             }
 
-            composable(Screens.ChatPage.screen + "/{id}") {
-                val id = it.arguments?.getString("id")?.toIntOrNull()
+            composable(Screens.ChatPage.screen) {
                 ChatPageUI(
                     paddingValues = paddingValues,
                     dataBase = dataBase,
                     navigationController = navigationController,
                     snackbarHostState = snackbarHostState,
-                    id = id
+                    context = context,
+                    application = application
                 )
             }
         }

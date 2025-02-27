@@ -32,7 +32,7 @@ import androidx.navigation.NavHostController
 import com.jeklov.legalentities.data.db.MainDB
 import com.jeklov.legalentities.data.models.User
 import com.jeklov.legalentities.data.view.model.UserViewModel
-import com.jeklov.legalentities.data.view.model.UserViewModelProvideFactory
+import com.jeklov.legalentities.data.view.model.UserViewModelProviderFactory
 import com.jeklov.legalentities.ui.screens.Screens
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -45,7 +45,7 @@ fun ChatUI(
     navigationController: NavHostController
 ) {
 
-    val viewModel: UserViewModel = viewModel(factory = UserViewModelProvideFactory(dataBase))
+    val viewModel: UserViewModel = viewModel(factory = UserViewModelProviderFactory(dataBase))
     val users = viewModel.allUsers.observeAsState(emptyList())
 
     //val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -93,8 +93,8 @@ fun ChatUI(
                             }
                         }
                     }
-                //}
-            }
+                }
+            //}
         //}
     //}
 }
@@ -106,7 +106,8 @@ fun UserItem(user: User, navigationController: NavHostController) {
             .fillMaxWidth()
             .padding(8.dp),
         onClick = {
-            navigationController.navigate(Screens.ChatPage.screen + "/" + user.id)
+            userGlobal = user
+            navigationController.navigate(Screens.ChatPage.screen)
         }
     ) {
         Row(

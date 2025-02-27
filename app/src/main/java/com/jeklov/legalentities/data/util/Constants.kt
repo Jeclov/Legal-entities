@@ -3,6 +3,7 @@ package com.jeklov.legalentities.data.util
 class Constants {
     companion object{
         const val BASE_URL = "http://185.239.50.182:10000/"
+        const val BASE_URL_WEBSOCKET = "ws://localhost:10000/ws/chat/"
 
         const val NO_INTERNET_CONNECTION = "No internet connection"
         const val UNABLE_TO_CONNECT = "Unable to connect"
